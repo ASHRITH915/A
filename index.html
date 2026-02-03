@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -162,6 +162,250 @@
     }
     noBtn.onmouseenter = randomMoveBtn;
     noBtn.onclick = randomMoveBtn;
+  </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valentine Interface</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8bbd0 0%, #fce4ec 100%);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .decorations {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .flower, .heart {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: float 5s infinite linear alternate;
+    }
+    .flower {
+      color: #e57373;
+    }
+    .heart {
+      color: #d32f2f;
+      font-size: 3rem;
+    }
+    @keyframes float {
+      0% { transform: translateY(0);}
+      100% { transform: translateY(-30px);}
+    }
+    .container {
+      position: relative;
+      width: 100vw;
+      min-height: 60vh;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #c2185b;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px #fff5f8;
+    }
+    .buttons-wrap {
+      position: relative;
+      width: 480px;
+      height: 180px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .decorative-line {
+      font-size: 1.2rem;
+      color: #ad1457;
+      margin-bottom: 18px;
+      margin-top: 20px;
+    }
+    #yes-btn {
+      font-size: 2rem;
+      padding: 1.2em 2.4em;
+      background: linear-gradient(90deg, #f06292 20%, #f8bbd0 80%);
+      color: white;
+      border: none;
+      border-radius: 40px;
+      box-shadow: 0 0 20px #ec407a80;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.2s;
+      position: relative;
+      z-index: 10;
+    }
+    #yes-btn:hover {
+      transform: scale(1.2) rotate(-5deg);
+      background: linear-gradient(90deg, #f8bbd0 20%, #f06292 80%);
+      box-shadow: 0 0 32px #ec407ac0;
+    }
+
+    #no-btn {
+      font-size: 1.2rem;
+      padding: 0.9em 1.6em;
+      background: #fff;
+      color: #e53935;
+      border: 2px solid #e53935;
+      border-radius: 30px;
+      cursor: pointer;
+      position: absolute;
+      left: 60px;
+      top: 80px;
+      z-index: 10;
+      min-width: 80px;
+      will-change: left, top;
+      box-shadow: 0 0 10px #e57373aa;
+      transition: left 0.15s, top 0.15s;
+    }
+
+    .love-gif-section {
+      margin-top: 64px;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+    .love-gif-section .tagline {
+      font-size: 2.2rem;
+      color: #ad1457;
+      font-weight: bold;
+      text-shadow: 2px 2px #fff8f8;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+    .love-gif-section img {
+      max-width: 400px;
+      width: 90vw;
+      border-radius: 24px;
+      margin-top: 8px;
+      box-shadow: 0 0 28px #eea4ce50;
+    }
+    @media (max-width: 600px) {
+      .buttons-wrap {
+        width: 98vw;
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="decorations" id="decorations"></div>
+  <div class="container">
+    <h1>
+      Will you be my Valantine?💗👥👥
+    </h1>
+    <div class="decorative-line">🌸💖💐💕❤️🌷 Spread the love! 🌸💖💐💕❤️🌷</div>
+    <div class="buttons-wrap">
+      <button id="yes-btn">YES 😍</button>
+      <button id="no-btn">NO 💔</button>
+    </div>
+  </div>
+  <div class="love-gif-section">
+    <span class="tagline">LOVE IS IN THE AIR</span><br>
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Love is in the Air GIF">
+  </div>
+  <script>
+    // Decorative Flowers and Hearts
+    function addDecorations() {
+      const decor = document.getElementById('decorations');
+      const flowerEmoji = ['🌸','🌼','🌷','💐'];
+      const heartEmoji = ['💖','💘','💝','💕','❤️','💞'];
+      for(let i = 0; i < 8; i++) {
+        let flower = document.createElement('span');
+        flower.className = 'flower';
+        flower.innerText = flowerEmoji[Math.floor(Math.random()*flowerEmoji.length)];
+        flower.style.left = `${Math.random()*100}vw`;
+        flower.style.top = `${Math.random()*100}vh`;
+        flower.style.fontSize = `${1.5 + Math.random()*2}rem`;
+        decor.appendChild(flower);
+      }
+      for(let i = 0; i < 6; i++) {
+        let heart = document.createElement('span');
+        heart.className = 'heart';
+        heart.innerText = heartEmoji[Math.floor(Math.random()*heartEmoji.length)];
+        heart.style.left = `${Math.random()*100}vw`;
+        heart.style.top = `${Math.random()*100}vh`;
+        heart.style.fontSize = `${2 + Math.random()*3}rem`;
+        decor.appendChild(heart);
+      }
+    }
+    addDecorations();
+
+    // YES Button capacity boost: shower of hearts on click!
+    document.getElementById('yes-btn').onclick = function () {
+      for (let i = 0; i < 20; i++) {
+        let heartBurst = document.createElement('span');
+        heartBurst.className = 'heart';
+        heartBurst.innerText = '💖';
+        heartBurst.style.left = `${40 + Math.random()*20}vw`;
+        heartBurst.style.top = `${35 + Math.random()*20}vh`;
+        heartBurst.style.fontSize = `${2 + Math.random()*2}rem`;
+        heartBurst.style.opacity = 0.95;
+        document.body.appendChild(heartBurst);
+        setTimeout(() => heartBurst.remove(), 1500 + Math.random()*900);
+      }
+      alert("YES! Love is in the air! 💖🌸💕");
+    };
+
+    // NO Button: moves randomly in any direction including diagonally
+    const noBtn = document.getElementById('no-btn');
+    function moveNoBtnRandomly() {
+      // The button is inside .buttons-wrap (relative), so pick values within wrap
+      const wrap = document.querySelector('.buttons-wrap');
+      const wrapRect = wrap.getBoundingClientRect();
+
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
+
+      // Padding so button stays in view, not off the edge
+      const padding = 10;
+      const maxLeft = wrap.offsetWidth - btnWidth - padding;
+      const maxTop = wrap.offsetHeight - btnHeight - padding;
+
+      // Up, Down, Left, Right, Diagonal directions:
+      const dirs = [
+        {dx: -1, dy: -1}, // NW
+        {dx: 0, dy: -1},  // N
+        {dx: 1, dy: -1},  // NE
+        {dx: 1, dy: 0},   // E
+        {dx: 1, dy: 1},   // SE
+        {dx: 0, dy: 1},   // S
+        {dx: -1, dy: 1},  // SW
+        {dx: -1, dy: 0}   // W
+      ];
+      // Pick a random direction
+      const dir = dirs[Math.floor(Math.random()*dirs.length)];
+      // Pick a random step size in px
+      const step = 60 + Math.random()*40;
+
+      // Get current position
+      let left = parseInt(noBtn.style.left) || 60;
+      let top  = parseInt(noBtn.style.top) || 80;
+
+      // Calculate new position, keep inside box
+      let newLeft = Math.min(Math.max(left + dir.dx * step, padding), maxLeft);
+      let newTop  = Math.min(Math.max(top + dir.dy * step, padding), maxTop);
+
+      noBtn.style.left = `${newLeft}px`;
+      noBtn.style.top = `${newTop}px`;
+    }
+    // Move on hover or click
+    noBtn.onmouseenter = moveNoBtnRandomly;
+    noBtn.onclick      = moveNoBtnRandomly;
   </script>
 </body>
 </html>
